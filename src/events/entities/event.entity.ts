@@ -1,7 +1,5 @@
 import { Column, Index, Entity ,PrimaryGeneratedColumn} from 'typeorm';
 
-
-
 @Index(['name', 'type']) 
 @Entity()
 export class Event {
