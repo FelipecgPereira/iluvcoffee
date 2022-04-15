@@ -6,12 +6,14 @@ import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
 import { CoffeesService } from './coffees.service';
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post, Query, Res, SetMetadata } from '@nestjs/common';
+import { ApiForbiddenResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('coffees')
 @Controller('coffees')
 export class CoffeesController {
 
     constructor(private readonly coffeesService: CoffeesService){}
-
+      @ApiForbiddenResponse({ description: 'Forbidden.' })
       @Public()
       @Get()
       async findAll(@Protocol() protocol: string, @Query() paginationQuery: PaginationQueryDto) {
